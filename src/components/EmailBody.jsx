@@ -11,6 +11,7 @@ export default function EmailBody() {
     const dispatch = useDispatch();
     const {from :{name}, date} = data;
     const [favourite, setFavourite] = useState(false);
+     // eslint-disable-next-line
     useEffect(() => {
       setData(emailList.find(item => item.id===id));
       if(fav.includes(id)) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchEmailList } from "../actions/sliceEmail";
 import { setState } from '../actions/sliceFilter';
 import Email from "./Email";

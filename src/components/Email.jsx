@@ -10,6 +10,7 @@ export default function Email({emailData}) {
     const dispatch = useDispatch();
     const [favo, setFavo] = useState('');
     const [style, setStyle] = useState('unread');
+     // eslint-disable-next-line
     useEffect(() => {
         if(fav.includes(eid)) {
             setFavo('Favorite');
@@ -18,6 +19,7 @@ export default function Email({emailData}) {
         }
         localStorage.setItem('saveFilter', JSON.stringify(fitlerState));
     }, [fav])
+     // eslint-disable-next-line
     useEffect(() => {
         if(read.includes(eid)) {
             setStyle('read');
@@ -26,6 +28,7 @@ export default function Email({emailData}) {
         }
         localStorage.setItem('saveFilter', JSON.stringify(fitlerState));
     }, [read])
+     // eslint-disable-next-line
     useEffect(() => {
         if(id === eid) setStyle('selected');
         else {
