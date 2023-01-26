@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const EMAIL_LIST_URL = "https://flipkart-email-mock.now.sh/";
 const EMAIL_BODY_URL = "https://flipkart-email-mock.now.sh/?id=";
 
-const iniState = {
+const initialState = {
     emailList: {},
     emailTotal: 0,
     emailPage: 1,
@@ -21,11 +21,11 @@ export const fetchEmailBody = createAsyncThunk('fetchEmailBody', async(id) => {
     const {data} = (await axios.get(EMAIL_BODY_URL+id));
     if(data) return data;
     return undefined;
-})
+});
 
 const sliceEmail = createSlice({
     name: 'email', 
-    iniState,
+    initialState,
     reducers: {
         setEmailPage(state, action) {
             state.emailPage = action.payload;

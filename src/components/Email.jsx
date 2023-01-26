@@ -5,8 +5,8 @@ import { addRead, setId } from "../actions/sliceFilter";
 
 export default function Email({emailData}) {
     const {eid, from: {email, name}, subject, desc, date} = emailData;
-    const fitlerState = useSelector(state=>state.filters);
-    const {fav, read, id} = fitlerState;
+    const filterState = useSelector(state=>state.filters);
+    const {fav, read, id} = filterState;
     const dispatch = useDispatch();
     const [favo, setFavo] = useState('');
     const [style, setStyle] = useState('unread');
@@ -17,7 +17,7 @@ export default function Email({emailData}) {
         } else {
             setFavo('');
         }
-        localStorage.setItem('saveFilter', JSON.stringify(fitlerState));
+        localStorage.setItem('saveFilter', JSON.stringify(filterState));
     }, [fav])
      // eslint-disable-next-line
     useEffect(() => {
@@ -26,7 +26,7 @@ export default function Email({emailData}) {
         } else {
             setStyle('unread');
         }
-        localStorage.setItem('saveFilter', JSON.stringify(fitlerState));
+        localStorage.setItem('saveFilter', JSON.stringify(filterState));
     }, [read])
      // eslint-disable-next-line
     useEffect(() => {
@@ -41,7 +41,7 @@ export default function Email({emailData}) {
     }, [id])
     const handleClick = () => {
         dispatch(addRead(eid));
-        dispatch(setId(id));
+        dispatch(setId(eid));
     }
   return (
     <section className={style} onClick={handleClick}>

@@ -1,3 +1,4 @@
+import React  from 'react';
 import {useSelector} from 'react-redux';
 import Navbar from "./components/Navbar";
 import EmailBody from './components/EmailBody';
@@ -10,7 +11,6 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      can you see?
       <div className='email'>
         <EmailItems />
         {(id) && <EmailBody id = {id}/>}

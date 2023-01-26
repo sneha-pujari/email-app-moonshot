@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const iniState = {
+const initialState = {
     read: [],
     fav: [],
     id: '',
@@ -9,7 +9,7 @@ const iniState = {
 
 const sliceFilter = createSlice({
     name: 'filter',
-    iniState,
+    initialState,
     reducers: {
         addRead(state, action) {
             if(!state.read.includes(action.payload)){

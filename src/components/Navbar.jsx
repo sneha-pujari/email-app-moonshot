@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../actions/sliceFilter";
-
+import React from 'react';
 function Navbar() {
   const { filter } = useSelector(state=>state.filters);
   const dispatch = useDispatch();
