@@ -6,27 +6,26 @@ import {addFav, removeFav} from "../actions/sliceFilter";
 
 export default function EmailBody() {
     const [data, setData] = useState({from: {name: ''}, date: ''});
-    const {fav, id} = useSelector(state=>state.filters);
+    const {fav, emailId} = useSelector(state=>state.filters);
     const {emailList, emailBody} = useSelector(state => state.emails);
     const dispatch = useDispatch();
     const {from :{name}, date} = data;
     const [favourite, setFavourite] = useState(false);
-     // eslint-disable-next-line
     useEffect(() => {
-      setData(emailList.find(item => item.id===id));
-      if(fav.includes(id)) {
+      setData(emailList.find(item => item.id===emailId));
+      if(fav.includes(emailId)) {
         setFavourite(true);
       } else {
         setFavourite(false);
       }
       dispatch(setEmailBody('Loading..'));
-      dispatch(fetchEmailBody(id));
-    }, [id])
+      dispatch(fetchEmailBody(emailId));
+    }, [emailId])
     const handleFavs = () => {
         if(favourite) {
-            dispatch(removeFav(id));
+            dispatch(removeFav(emailId));
         } else {
-            dispatch(addFav(id));
+            dispatch(addFav(emailId));
         }
         setFavourite(item => !item);
     }
@@ -39,7 +38,7 @@ export default function EmailBody() {
             <div className='details'>
                 <div className='body-details'>
                     <div className='name'>{name}</div>
-                    <button className={(favourite) ? 'notfav' : 'fav'} onClick={handleFavs}>{(favourite) ? 'Remove from favourites' : 'Mark as favourite'}</button>
+                    <button className={(favourite) ? 'notfav' : 'fav'} onClick={() => handleFavs()}>{(favourite) ? 'Remove from favourites' : 'Mark as favourite'}</button>
                 </div>
                 <p>{date}</p>
                 <div dangerouslySetInnerHTML={{ __html: emailBody }}></div>

@@ -22,7 +22,7 @@ function Navbar() {
             Favorites
         </button>
         
-        {(filter) && <button onClick={()=>handleFiler('')}><h5>clear</h5></button>}
+        {(filter) && <button className = "filter-clear-button" onClick={()=>handleFiler('')}>clear filter</button>}
     </nav>
   )
 }

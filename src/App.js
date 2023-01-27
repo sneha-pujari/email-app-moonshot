@@ -7,13 +7,13 @@ import EmailPage from './components/EmailPage';
 import "./App.css";
 
 function App() {
-  const { id } = useSelector(state=>state.filters);
+  const { emailId } = useSelector(state=>state.filters);
   return (
     <div className="App">
       <Navbar />
       <div className='email'>
         <EmailItems />
-        {(id) && <EmailBody id = {id}/>}
+        {(emailId) && <EmailBody id = {emailId}/>}
       </div>
       <EmailPage />
     </div>

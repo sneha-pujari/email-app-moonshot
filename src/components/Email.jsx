@@ -1,47 +1,44 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addRead, setId } from "../actions/sliceFilter";
+import { addRead, setEmailId } from "../actions/sliceFilter";
 
 export default function Email({emailData}) {
-    const {eid, from: {email, name}, subject, desc, date} = emailData;
+    const {id, from: {email, name}, subject, desc, date} = emailData;
     const filterState = useSelector(state=>state.filters);
-    const {fav, read, id} = filterState;
+    const {fav, read, emailId} = filterState;
     const dispatch = useDispatch();
     const [favo, setFavo] = useState('');
     const [style, setStyle] = useState('unread');
-     // eslint-disable-next-line
     useEffect(() => {
-        if(fav.includes(eid)) {
+        if(fav.includes(id)) {
             setFavo('Favorite');
         } else {
             setFavo('');
         }
         localStorage.setItem('saveFilter', JSON.stringify(filterState));
     }, [fav])
-     // eslint-disable-next-line
     useEffect(() => {
-        if(read.includes(eid)) {
+        if(read.includes(id)) {
             setStyle('read');
         } else {
             setStyle('unread');
         }
         localStorage.setItem('saveFilter', JSON.stringify(filterState));
     }, [read])
-     // eslint-disable-next-line
     useEffect(() => {
-        if(id === eid) setStyle('selected');
+        if(emailId === id) setStyle('selected');
         else {
-            if(read.includes(eid)) {
+            if(read.includes(id)) {
                 setStyle('read')
             } else {
                 setStyle('unread');
             }
         }
-    }, [id])
+    }, [emailId])
     const handleClick = () => {
-        dispatch(addRead(eid));
-        dispatch(setId(eid));
+        dispatch(addRead(id));
+        dispatch(setEmailId(id));
     }
   return (
     <section className={style} onClick={handleClick}>
@@ -52,7 +49,7 @@ export default function Email({emailData}) {
             <p>From: <span>{name+" <"+email+">"}</span></p>
             <p>Subject: <span>{subject}</span></p>
             <p>{desc}</p>
-            <p>{date}<span className='fav'>{favo}</span></p>
+            <p>{date}<span className={(favo) ? 'fav' : 'not'}>{favo}</span></p>
         </div>
     </section>
   )

@@ -11,8 +11,8 @@ export default function EmailPage() {
     }
   return (
     <footer>
-        page: <button className={(emailPage === 1) ? "filtered-button" : "filter-button"} onClick={() => handlePgNo(1)}>1</button>
-        <button className={(emailPage === 2) ? "filtered-button" : "filter-button"} onClick={() => handlePgNo(2)}>2</button>
+        page: <button className={(emailPage === 1) ? "paged-button" : "page-button"} onClick={() => handlePgNo(1)}>1</button>
+        <button className={(emailPage === 2) ? "paged-button" : "page-button"} onClick={() => handlePgNo(2)}>2</button>
     </footer>
   )
 }

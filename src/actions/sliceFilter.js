@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState = {
     read: [],
     fav: [],
-    id: '',
+    emailId: '',
     filter: ''
 }
 
@@ -18,7 +18,7 @@ const sliceFilter = createSlice({
         },
 
         addFav(state, action) {
-            if(!state.fav.include(action.payload)) {
+            if(!state.fav.includes(action.payload)) {
                 state.fav.push(action.payload)
             }
         },
@@ -32,8 +32,8 @@ const sliceFilter = createSlice({
             state.read = action.payload.read;
         },
 
-        setId(state, action) {
-            state.id = action.payload;
+        setEmailId(state, action) {
+            state.emailId = action.payload;
         },
 
         setFilter(state, action) {
@@ -41,5 +41,5 @@ const sliceFilter = createSlice({
         }
     }
 });
-export const {addRead, addFav, removeFav, setState, setFilter, setId} = sliceFilter.actions;
+export const {addRead, addFav, removeFav, setState, setFilter, setEmailId} = sliceFilter.actions;
 export default sliceFilter.reducer;

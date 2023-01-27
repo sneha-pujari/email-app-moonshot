@@ -29,12 +29,30 @@ nav button {
 nav button:hover {
     border: 1px solid #CFD2DC;
 }
-  
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 2em;
+}
+
+.page-button{
+  background-color: #E1E4EA;
+  border: 1px solid #CFD2DC;
+}
+
 .filtered-button {
     background-color: #E1E4EA;
     border: 1px solid #CFD2DC;
   }
-  
+   
+.filter-clear-button {
+  color:#918587;
+  font-weight: 100;
+}
+
 .email {
     display: flex;
     padding: 0px 25px;
@@ -62,7 +80,7 @@ main, .side {
   }
   
 aside{
-    width: 66%;
+    width: 150%;
     padding: 20px 5px;
     color: #636363;
   }
@@ -124,9 +142,11 @@ section{
   }
   
 .fav {
-    font-weight: bold;
+    border-radius: 20px;
+    font-weight: 10;
     color: #E54065;
-    padding: 0 25px;
+    padding: 0 15px 3px 15px;
+    margin: 0 0 0 10px;
   }
   
 .email-body {
